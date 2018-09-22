@@ -1,6 +1,6 @@
 FROM dreamlabs/php-composer:latest
 
-RUN wget http://get.sensiolabs.org/security-checker.phar -o /root/security.phar && \
-    chmod +x /root/security.phar;
+RUN composer global require sensiolabs/security-checker && \
+    ln -s /root/.composer/vendor/bin/security-checker /usr/bin/security;
 
-ENTRYPOINT ["php", "/root/security.phar"]
+ENTRYPOINT ["security"]
